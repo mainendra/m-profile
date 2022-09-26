@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.157.0/http/server.ts";
+import cors from "https://deno.land/x/edge_cors/src/cors.ts";
 
 let profile = {};
 
@@ -9,6 +10,6 @@ serve(req => {
             return Response.json(profile);
         });
     } else {
-        return Response.json(profile);
+        return cors(req, Response.json(profile));
     }
 });
